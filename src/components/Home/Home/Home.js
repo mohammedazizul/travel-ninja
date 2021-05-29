@@ -1,10 +1,12 @@
 import React from 'react';
+import TicketBookingForm from '../TicketBookingForm/TicketBookingForm';
+import './Home.css';
 
 const Home = () => {
     return (
-        <div>
-            Home
-        </div>
+        <main className='light-bg'>
+            <TicketBookingForm />
+        </main>
     );
 };
 
