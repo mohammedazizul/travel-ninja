@@ -5,7 +5,15 @@ const TicketBookingForm = () => {
     const handleSubmit = e => {
         e.preventDefault();
     }
-    
+
+    const handleTicketCount = (type, purpose) => {
+
+        purpose === 'increase'
+            ? document.getElementById(type).value = parseInt(document.getElementById(type).value) + 1
+            : document.getElementById(type).value = parseInt(document.getElementById(type).value) - 1;
+
+    }
+
     return (
         <section className='container'>
             <form onSubmit={handleSubmit} className='row p-2 justify-content-center align-items-center'>
@@ -36,17 +44,17 @@ const TicketBookingForm = () => {
                     <div class="mb-3">
                         <label for="firstClass" class="form-label">First Class</label>
                         <div className='d-flex'>
-                            <input type="number" class="form-control" id="firstClass" readOnly style={{ backgroundColor: 'white' }} />
-                            <button className="btn btn-secondary mx-2">+</button>
-                            <button className="btn btn-secondary">-</button>
+                            <input type="number" defaultValue={0} class="form-control" id="firstClass" readOnly style={{ backgroundColor: 'white' }} />
+                            <button onClick={() => handleTicketCount('firstClass', 'increase')} className="btn btn-secondary mx-2">+</button>
+                            <button onClick={() => handleTicketCount('firstClass', 'decrease')} className="btn btn-secondary">-</button>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="economy" class="form-label">Economy</label>
                         <div className="d-flex">
-                            <input type="number" class="form-control" id="economy" readOnly style={{ backgroundColor: 'white' }} />
-                            <button className="btn btn-secondary mx-2">+</button>
-                            <button className="btn btn-secondary">-</button>
+                            <input type="number" defaultValue={0} class="form-control" id="economy" readOnly style={{ backgroundColor: 'white' }} />
+                            <button onClick={() => handleTicketCount('economy', 'increase')} className="btn btn-secondary mx-2">+</button>
+                            <button onClick={() => handleTicketCount('economy', 'decrease')} className="btn btn-secondary">-</button>
                         </div>
                     </div>
                 </div>
