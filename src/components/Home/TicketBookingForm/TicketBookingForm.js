@@ -15,7 +15,7 @@ const TicketBookingForm = () => {
     }
 
     return (
-        <section className='container'>
+        <section className='container py-4'>
             <form onSubmit={handleSubmit} className='row p-2 justify-content-center align-items-center'>
                 <h3>Booking Flight</h3>
                 <div className='col-lg-3 col-md-4 col-sm-12'>
