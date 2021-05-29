@@ -1,2 +1,2 @@
-# PROJECT: travel-ninja
-more details coming soon# travel-ninja
+# PROJECT: Travel Ninja
+A Ticket booking Website
