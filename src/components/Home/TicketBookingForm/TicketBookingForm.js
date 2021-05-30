@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
 
 const TicketBookingForm = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
+        openModal();
     }
 
     const handleTicketCount = (type, purpose) => {
@@ -13,6 +17,26 @@ const TicketBookingForm = () => {
             : document.getElementById(type).value = parseInt(document.getElementById(type).value) - 1;
 
     }
+    const [modalIsOpen, setIsOpen] = useState(false);
+
+    function openModal() {
+        setIsOpen(true);
+    }
+
+    function closeModal() {
+        setIsOpen(false);
+    }
+
+    const modalCustomStyles = {
+        content : {
+          top                   : '50%',
+          left                  : '50%',
+          right                 : 'auto',
+          bottom                : 'auto',
+          marginRight           : '-50%',
+          transform             : 'translate(-50%, -50%)'
+        }
+      };
 
     return (
         <section className='container py-4'>
@@ -82,6 +106,16 @@ const TicketBookingForm = () => {
                     <button type="submit" class="btn btn-primary w-50">Submit</button>
                 </div>
             </form>
+
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                contentLabel="Example Modal"
+                style={modalCustomStyles}
+            >
+                <h2>Thank You for Comfirming Your ticket</h2>
+                <button onClick={closeModal} className='btn btn-success'>close</button>
+            </Modal>
         </section>
     );
 };
