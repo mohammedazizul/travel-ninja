@@ -43,7 +43,7 @@ const Login = () => {
             .then((result) => {
                 // The signed-in user info.
                 var googleUser = result.user;
-                console.log(googleUser);
+                // console.log(googleUser);
                 const { displayName, email } = googleUser;
                 const signedInUser = {
                     name: displayName,
@@ -51,7 +51,7 @@ const Login = () => {
                     error: ''
                 }
                 setUser(signedInUser);
-                console.log(user);
+                // console.log(user);
                 setLoggedInUser(signedInUser)
                 history.replace(from);
             }).catch((error) => {
@@ -82,18 +82,22 @@ const Login = () => {
     }
 
     return (
-        <div>
-                {
-                    loggedInUser.email ?
-                        <Button variant="primary" size="lg" onClick={handleSignOut}>Sign Out</Button>
-                        : <Button variant="primary" size="lg" onClick={handleGoogleSignIn}>
-                            Continue with &nbsp; <FontAwesomeIcon icon={faGoogle} />
-                        </Button>
-                }
-                {
-                    loggedInUser.email &&
-                    <h2>Welcome, {loggedInUser.name}</h2>
-                }
+        <div className="container-md justify-content-center">
+            <div class="row justify-content-md-center">
+                <div class="col-md-auto border border-success rounded mt-5 p-5">
+                    {
+                        loggedInUser.email ?
+                            <Button variant="primary" size="lg" onClick={handleSignOut}>Sign Out</Button>
+                            : <Button variant="primary" size="lg" onClick={handleGoogleSignIn}>
+                                Continue with &nbsp; <FontAwesomeIcon icon={faGoogle} />
+                            </Button>
+                    }
+                    {
+                        loggedInUser.email &&
+                        <h2>Welcome, {loggedInUser.name}</h2>
+                    }
+                </div>
+            </div>
         </div>
     );
 };

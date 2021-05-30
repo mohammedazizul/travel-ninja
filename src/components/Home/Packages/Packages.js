@@ -5,11 +5,8 @@ import data from '../../../fakedata/PACKAGE_MOCK_DATA.json';
 import { useSelector, useDispatch } from "react-redux";
 import {addToFavourite} from '../../../actions'
 
-
 const Packages = () => {
     const dispatch = useDispatch();
-
-
 
     const handlePackageClicked = (id) => {
         console.log("Package ID: ", id);
