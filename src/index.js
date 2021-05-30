@@ -4,9 +4,23 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+//STORE ->Globalized State
+import { createStore } from 'redux';
+import allReducers from './reducers/combine';
+import { Provider } from 'react-redux';
+
+let mystore=createStore(
+  allReducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  );
+
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={mystore}>
+      <App />
+    </Provider>
+
   </React.StrictMode>,
   document.getElementById('root')
 );

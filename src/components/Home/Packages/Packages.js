@@ -1,31 +1,35 @@
 import React from 'react';
+import './Package.css';
 import PackageCard from './PackageCard/PackageCard';
 import data from '../../../fakedata/PACKAGE_MOCK_DATA.json';
+import { useSelector, useDispatch } from "react-redux";
+import {addToFavourite} from '../../../actions'
 
 const Packages = () => {
-
-    // console.log(data);
+    const dispatch = useDispatch();
 
     const handlePackageClicked = (id) => {
-        console.log("Package ID: ",id);
-        alert("thanks for booking, we will get back to you soon !")
+        console.log("Package ID: ", id);
+        const commonData=data.filter(fv=>fv.id===id);
+        //console.log();
+        dispatch(addToFavourite(commonData[0]));
     }
 
     return (
-        <div className="container bg-light m-5 border border-info rounded">
-            <div class="d-flex justify-content-center">
-                <h1>Our Travel Packages</h1>
-            </div>
-            <div className="row row-cols-1 row-cols-md-2 g-4">
-                {
-                    data.map(packageInfo => 
-                        <PackageCard 
-                        data={packageInfo} 
-                        key={data.id} 
-                        handlePackageClicked={handlePackageClicked}
-                        ></PackageCard>
-                    )
-                }
+        <div className="bg-light pt-4 pb-4 rounded package-area">
+            <div className="container ">
+                <h1 className="text-center">Our Travel Packages</h1>
+                <div className="row row-cols-1 row-cols-md-2 g-4">
+                    {
+                        data.map(packageInfo =>
+                            <PackageCard
+                                data={packageInfo}
+                                key={data.id}
+                                handlePackageClicked={handlePackageClicked}
+                            ></PackageCard>
+                        )
+                    }
+                </div>
             </div>
         </div>
 
