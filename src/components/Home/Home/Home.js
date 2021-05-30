@@ -1,12 +1,14 @@
 import React from 'react';
-import BookingForm from '../../BookingForm/BookingForm';
+import Footer from '../../Shared/Footer/Footer';
+import TicketBookingForm from '../TicketBookingForm/TicketBookingForm';
+import './Home.css';
 
 const Home = () => {
     return (
-        <div>
-            Home
-            <BookingForm/>
-        </div>
+        <main className='light-bg'>
+            <TicketBookingForm />
+            <Footer />
+        </main>
     );
 };
 
