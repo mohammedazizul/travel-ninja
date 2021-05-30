@@ -5,7 +5,7 @@ import cancel from '../../../images/prohibition.svg';
 
 
 const FavouriteCard = (props) => {
-    const {id,countryName,description,image}=props.favData;
+    const {id,countryName,description}=props.favData;
     return (
         
         <div className="favourite-card row d-flex align-items-center shadow-none p-3 mb-3 bg-light rounded">

@@ -6,21 +6,20 @@ const bookingReducer = (state = [], action) => {
             {
                 id: ++lastId,
                 name: action.payload.name,
-                from: action.payload.from,
-                to: action.payload.to,
-                depDate: action.payload.depDate,
-                arrriDate: action.payload.arrriDate,
-                fastClassPrice: 300,
-                fastClassQnty: action.payload.fastClassQnty,
-                fastClassPType:  action.payload.fastClassPType,
-                economyClassPrice: 250,
-                economyQnty:  action.payload.economyQnty,
-                economyClassPType:  action.payload.economyClassPType
+                flyingFrom: action.payload.flyingFrom,
+                flyingto: action.payload.flyingto,
+                departure: action.payload.departure,
+                arrival: action.payload.arrival,
+                firstClass: action.payload.firstClass,
+                economy: action.payload.economy,
+                subTotal: action.payload.subTotal,
+                vat: action.payload.vat,
+                total: action.payload.total,
             }
         ]
     }
-    else if(action.type === "REMOVE_FROM_BOOKING"){
-        return state.filter(pd=>pd.id !== action.payload.id);
+    else if (action.type === "REMOVE_FROM_BOOKING") {
+        return state.filter(pd => pd.id !== action.payload.id);
     }
     else {
         return state;
