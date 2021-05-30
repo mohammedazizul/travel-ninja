@@ -1,0 +1,29 @@
+html,body,#root{
+    height: 100%;
+}
+.bookings-area{
+    background-image: url('../../../images/booking_bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height:100%;
+    padding:50px 0
+}
+
+.bookings-small-area{
+   
+}
+
+.bookings-small-area>h1>span {
+    background-color: white;
+    font-weight: 200;
+    font-size: 24px;
+    padding: 10px;
+}
+
+.bookings-small-area h1 img{
+    width:20px
+}
+
+.booking-card-holder{}
+

@@ -1,0 +1,23 @@
+.booking-card{} 
+.booking-card img{
+    width:20px
+}
+.booking-card h3 {
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+}
+.booking-card h6 {
+    font-weight: bold;
+    font-size: 13px;
+}
+.booking-card p{
+    font-size: 13px;
+} 
+
+@media (max-width: 575.98px) {
+    .cencel-button-box{
+        display: block !important;
+        width: 100%;
+    }
+}
