@@ -4,18 +4,51 @@ import Modal from 'react-modal';
 Modal.setAppElement('#root');
 
 const TicketBookingForm = () => {
+    const [ticketInfo, setTicketInfo] = useState({
+        flyingFrom: '',
+        flyingto: '',
+        departure: '',
+        return: '',
+        firstClass: 0,
+        economy: 0,
+        subTotal: 0,
+        vat: 0,
+        total: 0,
+    })
 
     const handleSubmit = e => {
         e.preventDefault();
+
+        console.log(ticketInfo);
+
         openModal();
+        
+    }
+
+    const handleInputField = e => {
+        const newTicketInfo = {
+            ...ticketInfo
+        }
+
+        newTicketInfo[e.target.name] = e.target.value;
+
+        setTicketInfo(newTicketInfo);
     }
 
     const handleTicketCount = (type, purpose) => {
-
         purpose === 'increase'
             ? document.getElementById(type).value = parseInt(document.getElementById(type).value) + 1
             : document.getElementById(type).value = parseInt(document.getElementById(type).value) - 1;
+        
+        const newTicketInfo = {
+            ...ticketInfo
+        }
 
+        newTicketInfo[type] = parseInt(document.getElementById(type).value);
+        newTicketInfo.subTotal = (newTicketInfo.firstClass * 150) + (newTicketInfo.economy * 100);
+        newTicketInfo.vat = newTicketInfo.subTotal * 0.1;
+        newTicketInfo.total = newTicketInfo.subTotal + newTicketInfo.vat;
+        setTicketInfo(newTicketInfo);
     }
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -40,27 +73,27 @@ const TicketBookingForm = () => {
 
     return (
         <section className='container py-4'>
-            <form onSubmit={handleSubmit} className='row p-2 justify-content-center align-items-center'>
+            <div className='row p-2 justify-content-center align-items-center'>
                 <h3>Booking Flight</h3>
                 <div className='col-lg-3 col-md-4 col-sm-12'>
                     <div class="mb-3">
                         <label for="flyingFrom" class="form-label">Flying From</label>
-                        <input type="text" class="form-control" id="flyingFrom" />
+                        <input onBlur={handleInputField} name='flyingFrom' type="text" class="form-control" id="flyingFrom" />
                     </div>
                     <div class="mb-3">
                         <label for="flyingTo" class="form-label">Flying To</label>
-                        <input type="text" class="form-control" id="flyingto" />
+                        <input onBlur={handleInputField} name='flyingto' type="text" class="form-control" id="flyingto" />
                     </div>
                 </div>
 
                 <div className='col-lg-3 col-md-4 col-sm-12'>
                     <div class="mb-3">
                         <label for="departure" class="form-label">Departure</label>
-                        <input type="datetime-local" class="form-control" id="departure" />
+                        <input onChange={handleInputField} name='departure' type="datetime-local" class="form-control" id="departure" />
                     </div>
                     <div class="mb-3">
                         <label for="return" class="form-label">Return</label>
-                        <input type="datetime-local" class="form-control" id="return" />
+                        <input onChange={handleInputField} name='return' type="datetime-local" class="form-control" id="return" />
                     </div>
                 </div>
 
@@ -88,24 +121,24 @@ const TicketBookingForm = () => {
                         <tbody>
                             <tr>
                                 <td>Sub-Total</td>
-                                <td>0</td>
+                                <td>{ticketInfo.subTotal}</td>
                             </tr>
-                            <tr>
-                                <td>Charge</td>
-                                <td>10% VAT</td>
+                            <tr className='border-dark'>
+                                <td>Charge(10% VAT)</td>
+                                <td>{ticketInfo.vat}</td>
                             </tr>
                             <tr>
                                 <td>Total</td>
-                                <td>0</td>
+                                <td>{ticketInfo.total}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
                 <div className='col-12 text-center'>
-                    <button type="submit" class="btn btn-primary w-50">Submit</button>
+                    <button onClick={handleSubmit} class="btn btn-primary w-50">Submit</button>
                 </div>
-            </form>
+            </div>
 
             <Modal
                 isOpen={modalIsOpen}
