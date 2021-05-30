@@ -2,16 +2,16 @@ import React from 'react';
 import './Package.css';
 import PackageCard from './PackageCard/PackageCard';
 import data from '../../../fakedata/PACKAGE_MOCK_DATA.json';
-import { useSelector, useDispatch } from "react-redux";
+//Redux Part
+import { useDispatch } from "react-redux";
 import {addToFavourite} from '../../../actions'
 
 const Packages = () => {
     const dispatch = useDispatch();
 
     const handlePackageClicked = (id) => {
-        console.log("Package ID: ", id);
         const commonData=data.filter(fv=>fv.id===id);
-        //console.log();
+        //Dispatching for Adding Clicked Data into STORE
         dispatch(addToFavourite(commonData[0]));
     }
 

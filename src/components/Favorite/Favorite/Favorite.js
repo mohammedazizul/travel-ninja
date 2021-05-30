@@ -1,9 +1,10 @@
 import React from 'react';
 import './Favourite.css'
-import { useSelector, useDispatch } from "react-redux";
 import FavouriteCard from '../FavouriteCard/FavouriteCard';
+//Code For Redux
+import { useSelector, useDispatch } from "react-redux";
 import {removeFavourite} from '../../../actions';
-import data from '../../../fakedata/PACKAGE_MOCK_DATA.json';
+
 
 const Favorite = () => {
     const dispatch = useDispatch();
@@ -15,8 +16,7 @@ const Favorite = () => {
         }
         dispatch(removeFavourite(theId));
     }
-    console.log(showFavourite)
-    let i=1;
+    console.log(showFavourite);
     return (
         <section className="container-fluid favourite-area d-flex align-items-center">
             <div className="col-lg-5 col-md-5 col-sm-8 col-xs-12 mx-auto favourite-small-area ">

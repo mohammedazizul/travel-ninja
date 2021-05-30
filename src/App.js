@@ -30,9 +30,10 @@ function App() {
         <PrivateRoute path='/bookings'>
           <Bookings />
         </PrivateRoute>
-        <Route path='/favorite'>
-          <Favorite />
-        </Route>
+        <PrivateRoute path='/favorite'>
+        <Favorite />
+        </PrivateRoute>
+       
         <Route path='/about'>
           <About />
         </Route>
