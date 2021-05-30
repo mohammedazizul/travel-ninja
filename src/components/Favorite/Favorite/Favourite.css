@@ -1,0 +1,29 @@
+html,body,#root{
+    height: 100%;
+}
+.favourite-area{
+    background-image: url('../../../images/favourite_bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height:100%;
+    padding:50px 0
+}
+
+.favourite-small-area{
+   
+}
+
+.favourite-small-area>h1>span {
+    background-color: white;
+    font-weight: 200;
+    font-size: 24px;
+    padding: 10px;
+}
+
+.favourite-small-area h1 img{
+    width:20px
+}
+
+.booking-card-holder{}
+

@@ -6,7 +6,6 @@ const PackageCard = (props) => {
     console.log(props.data);
 
     const {id, countryName, image, description} = props.data;
-
     return (
         <div className="col">
             <div className="card">
@@ -18,7 +17,7 @@ const PackageCard = (props) => {
                     onClick={() => {
                         props.handlePackageClicked(id)
                         }}
-                    >Book Now</Button>
+                    >Add To Favourite</Button>
                 </div>
             </div>
         </div>
