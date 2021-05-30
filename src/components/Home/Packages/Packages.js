@@ -4,7 +4,7 @@ import data from '../../../fakedata/PACKAGE_MOCK_DATA.json';
 
 const Packages = () => {
 
-    console.log(data);
+    // console.log(data);
 
     const handlePackageClicked = (id) => {
         console.log("Package ID: ",id);

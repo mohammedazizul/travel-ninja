@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 
 const PackageCard = (props) => {
 
-    console.log(props.data);
+    // console.log(props.data);
 
     const {id, countryName, image, description} = props.data;
 
