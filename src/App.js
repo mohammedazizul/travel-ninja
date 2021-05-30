@@ -7,6 +7,7 @@ import Favorite from './components/Favorite/Favorite/Favorite';
 import Home from './components/Home/Home/Home';
 import Login from './components/Login/Login/Login';
 import PageNotFound from './components/PageNotFound/PageNotFound';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import NavigationBar from './components/Shared/NavigationBar/NavigationBar';
 
 export const UserContext = createContext();
@@ -26,9 +27,9 @@ function App() {
         <Route path='/home'>
           <Home />
         </Route>
-        <Route path='/bookings'>
+        <PrivateRoute path='/bookings'>
           <Bookings />
-        </Route>
+        </PrivateRoute>
         <Route path='/favorite'>
           <Favorite />
         </Route>

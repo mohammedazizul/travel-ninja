@@ -10,6 +10,7 @@ import "firebase/auth";
 import firebaseConfig from "./FirebaseConfig/firebase.config"
 import { useState } from 'react';
 import { UserContext } from '../../../App';
+import { useHistory, useLocation } from 'react-router';
 
 // conditional initalizing of firebase
 if (firebase.apps.length === 0) {
@@ -26,6 +27,10 @@ const Login = () => {
 
     // setting useContext value
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+
+    const history = useHistory();
+    const location = useLocation();
+    let { from } = location.state || { from: { pathname: "/" } };
 
     // to create an instance of the Google provider object
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -48,6 +53,7 @@ const Login = () => {
                 setUser(signedInUser);
                 console.log(user);
                 setLoggedInUser(signedInUser)
+                history.replace(from);
             }).catch((error) => {
                 // Handle Errors here.
                 var errorCode = error.code;
