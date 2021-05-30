@@ -2,9 +2,11 @@ import React from 'react';
 
 const About = () => {
     return (
-        <div>
-            About
-        </div>
+        <main>
+            <section className='container'>
+
+            </section>
+        </main>
     );
 };
 
